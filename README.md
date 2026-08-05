@@ -21,4 +21,4 @@ Then visit `http://localhost:8000`.
 
 The contact section intentionally includes email only.
 
-Testing Git workflow 
+Just test 
