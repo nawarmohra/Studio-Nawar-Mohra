@@ -20,3 +20,5 @@ Then visit `http://localhost:8000`.
 - Replace `assets/profile-000.jpg` with another portrait while keeping the same filename.
 
 The contact section intentionally includes email only.
+
+Testing Git workflow 
