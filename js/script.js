@@ -51,3 +51,14 @@ if (nav && menuButton) nav.querySelectorAll('a').forEach((link) => {
 
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
+
+const siteHeader = document.querySelector('.site-header');
+
+function updateHeader() {
+  if (!siteHeader) return;
+
+  siteHeader.classList.toggle('is-scrolled', window.scrollY > 40);
+}
+
+updateHeader();
+window.addEventListener('scroll', updateHeader, { passive: true });
