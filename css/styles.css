@@ -22,6 +22,8 @@ body {
   line-height: 1.55;
   overflow-x: hidden;
 }
+body.nav-open { overflow: hidden}
+
 a { color: inherit; text-decoration: none; }
 img { display: block; max-width: 100%; }
 button { font: inherit; }
