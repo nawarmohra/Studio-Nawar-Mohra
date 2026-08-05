@@ -11,14 +11,3 @@ python3 -m http.server 8000
 ```
 
 Then visit `http://localhost:8000`.
-
-## Customize
-
-- Edit content in `index.html`.
-- Edit visual styling in `styles.css`.
-- Edit interactions in `script.js`.
-- Replace `assets/profile-000.jpg` with another portrait while keeping the same filename.
-
-The contact section intentionally includes email only.
-
-Just test 
