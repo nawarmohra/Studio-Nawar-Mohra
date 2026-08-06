@@ -1484,6 +1484,17 @@ button {
   }
 }
 
+.img-visual--hero {
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0;
+}
+
+.img-visual--hero img {
+  width: 70%;
+  height: auto;
+  display: block;
+}
 
 /* GoPro case study */
 .gopro-page { padding-top: 96px; }
