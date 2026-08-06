@@ -9,6 +9,7 @@
   --dark: #191919;
   --white: #fff;
   --max: 1440px;
+  --pad: clamp(20px, 4vw, 48px);
 }
 
 * {
@@ -243,7 +244,7 @@ button {
   width: 100%;
   min-height: 100svh;
   overflow: hidden;
-  align-items: left;
+  align-items: flex-start;
   isolation: isolate;
   padding:
     clamp(100px, 10vw, 140px) clamp(16px, 3vw, 32px) clamp(60px, 6vw, 80px);
@@ -335,7 +336,7 @@ button {
 @media (max-width: 700px) {
   .hero--studio {
     min-height: auto;
-    /* display: flex; */
+    display: flex;
     flex-direction: column;
     padding: 0;
     background: var(--paper);
@@ -360,7 +361,7 @@ button {
 
   .hero__content {
     order: 2;
-    padding: 42px var(--pad) 58px;
+    padding: 42px 24px 58px;
   }
 
   .hero--studio .eyebrow {
@@ -638,7 +639,9 @@ button {
 }
 
 @media (max-width: 900px) {
-  .site-header {
+
+  .site-header,
+  .site-header.is-scrolled {
     position: fixed;
     top: 0;
     left: 0;
@@ -652,19 +655,23 @@ button {
     align-items: center;
     justify-content: space-between;
 
-    background: rgba(246, 244, 240, 0.92);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: rgba(246, 244, 240, 0.96);
+
+    /* Important: remove blur on the mobile header */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    box-shadow: 0 1px 0 rgba(23, 23, 23, 0.08);
   }
 
-  .brand {
+  .brand,
+  .menu-toggle {
     position: relative;
-    z-index: 102;
+    z-index: 1000;
   }
 
   .menu-toggle {
     position: relative;
-    z-index: 102;
 
     display: block;
     padding: 6px 10px;
@@ -680,7 +687,7 @@ button {
   .site-nav {
     position: fixed;
     inset: 0;
-    z-index: 101;
+    z-index: 999;
 
     width: 100%;
     height: 100svh;
@@ -1234,3 +1241,256 @@ button {
   }
 
 }
+
+/* =========================================================
+   CONSOLIDATED RESPONSIVE OVERRIDES
+   Keep this section at the very end of the stylesheet.
+========================================================= */
+
+@media (max-width: 900px) {
+  .section {
+    width: 100%;
+    max-width: var(--max);
+    padding: 64px 24px;
+  }
+
+  .intro__grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .intro__grid .section-title {
+    margin-top: 36px;
+    margin-bottom: 24px;
+  }
+
+  .intro__copy {
+    max-width: 680px;
+    padding-top: 0;
+  }
+
+  .experience-row {
+    grid-template-columns: 40px minmax(0, 1fr) 100px;
+    gap: 20px;
+  }
+
+  .experience-row__summary {
+    grid-column: 2 / 4;
+  }
+
+  .profile-band {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 72px 24px;
+  }
+
+  .profile-card {
+    width: min(100%, 360px);
+  }
+
+  .skill-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .education__grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .contact {
+    padding: 72px 24px;
+  }
+
+  .site-footer {
+    padding: 28px 24px;
+  }
+
+  .work-grid,
+  .case-meta,
+  .case-content,
+  .case-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .case-panel:nth-child(3) {
+    grid-column: auto;
+  }
+
+  .page-main {
+    padding-top: 80px;
+  }
+}
+
+@media (max-width: 700px) {
+  .hero--studio {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    background: var(--paper);
+  }
+
+  .hero__media {
+    position: relative;
+    inset: auto;
+    order: 1;
+    width: 100%;
+    height: 55svh;
+    min-height: 360px;
+  }
+
+  .hero__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 63% center;
+  }
+
+  .hero__overlay {
+    display: none;
+  }
+
+  .hero__content,
+  .hero.hero--studio .hero__content {
+    order: 2;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 42px 24px 58px;
+  }
+
+  .hero--studio h1 {
+    max-width: 100%;
+    font-size: clamp(2.8rem, 13vw, 4.5rem);
+    line-height: .96;
+  }
+
+  .hero--studio .eyebrow {
+    margin-bottom: 20px;
+    font-size: .75rem;
+  }
+
+  .hero__actions {
+    margin-top: 32px;
+  }
+
+  .section {
+    padding: 48px 20px;
+  }
+
+  .section-title {
+    margin: 32px 0 44px;
+    font-size: clamp(2rem, 10vw, 3rem);
+  }
+
+  .experience-row {
+    grid-template-columns: 30px minmax(0, 1fr);
+  }
+
+  .experience-row time,
+  .experience-row__summary {
+    grid-column: 2;
+    text-align: left;
+  }
+
+  .skill-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .skill-card {
+    min-height: auto;
+    padding: 28px 22px;
+  }
+
+  .skill-card h3 {
+    margin-top: 40px;
+  }
+
+  .contact__details,
+  .site-footer,
+  .work-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+  }
+
+  .case-hero {
+    min-height: 62svh;
+  }
+
+  .case-hero h1 {
+    font-size: clamp(3.5rem, 18vw, 6rem);
+  }
+
+  .case-panel,
+  .case-panel:nth-child(3) {
+    min-height: 360px;
+  }
+
+  .approach__title {
+    font-size: clamp(2rem, 8vw, 3.3rem);
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .approach__text {
+    margin: 28px auto 48px;
+    padding-inline: 20px;
+    font-size: 1rem;
+  }
+
+  .approach__image {
+    height: 320px;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-header,
+  .site-header.is-scrolled {
+    padding: 16px 20px;
+  }
+
+  .brand {
+    font-size: .88rem;
+  }
+
+  .menu-toggle {
+    padding: 5px 9px;
+  }
+
+  .site-nav {
+    padding: 90px 20px 36px;
+  }
+
+  .site-nav a {
+    font-size: clamp(2.5rem, 13vw, 3.8rem);
+  }
+
+  .hero__media {
+    height: 48svh;
+    min-height: 320px;
+  }
+
+  .hero__content,
+  .hero.hero--studio .hero__content {
+    padding: 34px 20px 46px;
+  }
+
+  .hero--studio h1 {
+    font-size: clamp(2.5rem, 12vw, 3.6rem);
+  }
+
+  .section {
+    padding: 40px 20px;
+  }
+
+  .contact__button {
+    width: 130px;
+    height: 130px;
+  }
+
+  .approach__image {
+    height: 260px;
+  }
+}
+
