@@ -863,6 +863,12 @@ button {
   gap: 70px 30px;
 }
 
+.work-grid-portfolio {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 70px 32px;
+}
+
 .work-card {
   display: block;
 }
@@ -942,28 +948,11 @@ button {
   transition: transform .45s cubic-bezier(.2, .7, .2, 1);
 }
 
-.art-qiksi {
-  background: radial-gradient(circle at 75% 22%, #f3d8be 0 16%, transparent 17%), linear-gradient(125deg, #253348 0 45%, #d8a15b 45% 66%, #efe6d7 66%);
-}
-
-.art-gopro {
-  background: linear-gradient(165deg, #111 0 52%, #b08d57 52% 64%, #e9e5dc 64%);
-}
-
-.art-presentation {
-  background: linear-gradient(90deg, #6d3e37 0 35%, #e9d8c4 35% 68%, #262626 68%);
-}
-
-.art-souria {
-  background: radial-gradient(circle at 27% 28%, #c9a46a 0 14%, transparent 15%), linear-gradient(135deg, #163d36, #315f55 55%, #e5d3b5 55%);
-}
-
-.art-currency {
-  background: linear-gradient(120deg, #1c1c1c 0 42%, #8c6b3e 42% 58%, #ede8df 58%);
-}
-
-.art-poster {
-  background: radial-gradient(circle at 70% 30%, #ad7969 0 17%, transparent 18%), linear-gradient(145deg, #e8dfd0, #2b2927);
+.work-card__visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
 .work-cta {
@@ -1113,7 +1102,7 @@ button {
 }
 
 @media (max-width:900px) {
-  .work-grid {
+  .work-grid, .work-grid-portfolio {
     grid-template-columns: 1fr
   }
 
@@ -1306,6 +1295,7 @@ button {
   }
 
   .work-grid,
+  .work-grid-portfolio,
   .case-meta,
   .case-content,
   .case-gallery {
@@ -1494,3 +1484,47 @@ button {
   }
 }
 
+
+/* GoPro case study */
+.gopro-page { padding-top: 96px; }
+.gopro-intro { padding-top: clamp(80px, 10vw, 150px); padding-bottom: 72px; }
+.gopro-intro h1 { margin: 24px 0 34px; font-family: "Space Grotesk", sans-serif; font-size: clamp(4.5rem, 11vw, 10rem); font-weight: 400; line-height: .82; letter-spacing: -.075em; }
+.gopro-intro__lead { max-width: 760px; margin: 0; color: var(--muted); font-size: clamp(1.1rem, 2vw, 1.5rem); }
+.gopro-facts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 72px; padding-top: 22px; border-top: 1px solid var(--line); }
+.gopro-facts small { display: block; margin-bottom: 8px; color: var(--muted); text-transform: uppercase; letter-spacing: .12em; }
+.gopro-facts p { margin: 0; }
+.gopro-visual { margin: 0; overflow: hidden; background: #090b12; }
+.gopro-visual img { width: 100%; height: auto; }
+.gopro-visual--hero { width: 100%; }
+.gopro-story { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: clamp(40px, 9vw, 140px); }
+.gopro-story__label { color: var(--muted); text-transform: uppercase; letter-spacing: .14em; font-size: .75rem; }
+.gopro-story__body { max-width: 900px; }
+.gopro-story h2, .gopro-challenge h2, .gopro-feature h2 { margin: 0 0 30px; font-family: "Space Grotesk", sans-serif; font-size: clamp(2.3rem, 4.6vw, 5rem); font-weight: 400; line-height: .98; letter-spacing: -.055em; }
+.gopro-story p, .gopro-feature p { max-width: 700px; color: var(--muted); font-size: 1.08rem; }
+.gopro-challenge { max-width: 1200px; }
+.gopro-challenge h2 { max-width: 1080px; margin-top: 30px; }
+.gopro-feature { display: grid; grid-template-columns: .72fr 1.28fr; gap: clamp(42px, 7vw, 110px); align-items: center; }
+.gopro-feature__copy { position: sticky; top: 130px; align-self: start; padding-top: 24px; }
+.gopro-feature .gopro-visual { border-radius: 18px; box-shadow: 0 25px 70px rgba(0, 0, 0, .12); }
+.gopro-dark-section { background: var(--dark); color: var(--white); }
+.gopro-dark-section .page-hero__kicker, .gopro-dark-section .gopro-feature p { color: rgba(255, 255, 255, .62); }
+.gopro-feature--reverse { grid-template-columns: 1.28fr .72fr; }
+.gopro-feature--reverse .gopro-feature__copy { order: 2; }
+.gopro-feature--reverse .gopro-visual { order: 1; }
+.gopro-reflection { padding-bottom: 130px; }
+
+@media (max-width: 900px) {
+  .gopro-page { padding-top: 72px; }
+  .gopro-facts { grid-template-columns: repeat(2, 1fr); }
+  .gopro-story, .gopro-feature, .gopro-feature--reverse { grid-template-columns: 1fr; }
+  .gopro-feature__copy { position: static; padding-top: 0; }
+  .gopro-feature--reverse .gopro-feature__copy, .gopro-feature--reverse .gopro-visual { order: initial; }
+}
+
+@media (max-width: 560px) {
+  .gopro-intro { padding-top: 48px; }
+  .gopro-intro h1 { font-size: clamp(3.4rem, 18vw, 5rem); }
+  .gopro-facts { grid-template-columns: 1fr; margin-top: 48px; }
+  .gopro-story { gap: 26px; }
+  .gopro-feature .gopro-visual { border-radius: 10px; }
+}
