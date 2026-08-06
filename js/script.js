@@ -32,22 +32,56 @@ document.querySelectorAll('.reveal').forEach((element, index) => {
 const menuButton = document.querySelector('.menu-toggle');
 const nav = document.querySelector('.site-nav');
 
-if (menuButton && nav) menuButton.addEventListener('click', () => {
-  const open = menuButton.getAttribute('aria-expanded') === 'true';
-  menuButton.setAttribute('aria-expanded', String(!open));
-  menuButton.textContent = open ? 'Menu' : 'Close';
-  menuButton.classList.toggle('is-open', !open);
-  nav.classList.toggle('is-open', !open);
-});
+function closeMenu() {
+  if (!menuButton || !nav) return;
 
-if (nav && menuButton) nav.querySelectorAll('a').forEach((link) => {
-  link.addEventListener('click', () => {
-    menuButton.setAttribute('aria-expanded', 'false');
-    menuButton.textContent = 'Menu';
-    menuButton.classList.remove('is-open');
-    nav.classList.remove('is-open');
+  menuButton.setAttribute('aria-expanded', 'false');
+  menuButton.textContent = 'Menu';
+  menuButton.classList.remove('is-open');
+
+  nav.classList.remove('is-open');
+  document.body.classList.remove('nav-open');
+}
+
+function openMenu() {
+  if (!menuButton || !nav) return;
+
+  menuButton.setAttribute('aria-expanded', 'true');
+  menuButton.textContent = 'Close';
+  menuButton.classList.add('is-open');
+
+  nav.classList.add('is-open');
+  document.body.classList.add('nav-open');
+}
+
+if (menuButton && nav) {
+  menuButton.addEventListener('click', () => {
+    const isOpen =
+      menuButton.getAttribute('aria-expanded') === 'true';
+
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
   });
-});
+
+  nav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 900) {
+      closeMenu();
+    }
+  });
+}
 
 const year = document.getElementById('year');
 if (year) year.textContent = new Date().getFullYear();
