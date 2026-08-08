@@ -1210,6 +1210,52 @@ button {
   object-position: center;
 }
 
+.outline-button {
+  position: relative;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+
+  min-width: 260px;
+  padding: 18px 22px;
+
+  border: 1px solid #2a2d36;
+  border-radius: 14px;
+
+  color: #181818;
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 400;
+  text-decoration: none;
+
+  overflow: hidden;
+
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.outline-button__icon {
+  flex-shrink: 0;
+
+  transition:
+    transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Hover */
+.outline-button:hover {
+  border-color: #181818;
+}
+
+.outline-button:hover .outline-button__icon {
+  transform: translate(6px, -6px);
+}
+
 @media (max-width:768px) {
 
   .approach__title {
