@@ -12,7 +12,7 @@ window.addEventListener('load', () => {
   setTimeout(() => {
     if (greetingTimer) clearInterval(greetingTimer);
     if (loader) loader.classList.add('is-hidden');
-  }, 900);
+  }, 600);
 });
 
 const revealObserver = new IntersectionObserver((entries) => {
